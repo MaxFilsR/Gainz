@@ -108,7 +108,7 @@ const SettingScreen = () => {
           onPress: () => {
             Alert.alert(
               "Final Confirmation",
-              "Are you sure?",
+              "This will permanently delete your account. Are you absolutely sure?",
               [
                 {
                   text: "Cancel",
@@ -117,9 +117,21 @@ const SettingScreen = () => {
                 {
                   text: "Yes, Delete My Account",
                   style: "destructive",
-                  onPress: () => {
-                    console.log("Deleting account...")
-                      //api delete account
+                  onPress: async () => {
+                    try {
+                      // TODO: Implement delete account API endpoint
+                      // await deleteAccount();
+                      console.log("Account deletion not yet implemented in backend");
+                      Alert.alert(
+                        "Notice",
+                        "Account deletion feature is coming soon. Please contact support to delete your account."
+                      );
+                    } catch (error: any) {
+                      Alert.alert(
+                        "Error",
+                        error.response?.data?.message || "Failed to delete account. Please try again."
+                      );
+                    }
                   },
                 },
               ]

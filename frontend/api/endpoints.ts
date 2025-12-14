@@ -20,4 +20,3 @@ export * from "./modules/quests";
 export * from "./modules/inventory";
 export * from "./modules/stats";
 export * from "./modules/settings";
-export * from "./modules/shop";

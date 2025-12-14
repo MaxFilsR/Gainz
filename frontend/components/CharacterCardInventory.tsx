@@ -20,8 +20,6 @@ import { useAuth } from "@/lib/auth-context";
 // ============================================================================
 
 type CharacterCardInventoryProps = {
-  username?: string;
-  level?: number;
   borderColor?: string;
   accentColor?: string;
   onSettingsPress?: () => void;
@@ -142,8 +140,6 @@ function EquipmentSlotItem({
 // ============================================================================
 
 export default function CharacterCardInventory({
-  username,
-  level,
   borderColor = colorPallet.primary,
   accentColor = colorPallet.secondary,
   onSettingsPress,
@@ -151,6 +147,9 @@ export default function CharacterCardInventory({
   const { equipped } = useInventory();
   const { user } = useAuth();
 
+  // Always get data from auth context
+  const username = user?.profile?.username;
+  const level = user?.profile?.level;
   const stats = user?.profile?.class?.stats || {
     strength: 0,
     endurance: 0,

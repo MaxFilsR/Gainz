@@ -11,7 +11,8 @@ import { colorPallet } from "@/styles/variables";
 import { typography, containers } from "@/styles";
 import { Ionicons } from "@expo/vector-icons";
 import { FormTextInput, FormButton, BackButton } from "@/components";
-import { getCharacter, updateName } from "@/api/endpoints";
+import { updateName } from "@/api/endpoints";
+import { useAuth } from "@/lib/auth-context";
 import axios from "axios";
 
 // ============================================================================
@@ -19,6 +20,7 @@ import axios from "axios";
 // ============================================================================
 
 export default function EditNameScreen() {
+  const { fetchUserProfile } = useAuth();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -29,6 +31,7 @@ export default function EditNameScreen() {
   useEffect(() => {
     async function loadProfile() {
       try {
+        // TODO: Update when name fields are added to character profile
         setFirstName("John");
         setLastName("Doe");
       } catch (err) {
@@ -55,6 +58,9 @@ export default function EditNameScreen() {
     try {
       // update name
       await updateName({ first_name: firstName, last_name: lastName });
+
+      // Refresh user profile to reflect changes everywhere
+      await fetchUserProfile();
 
       router.back();
     } catch (err: unknown) {
@@ -167,10 +173,3 @@ const styles = StyleSheet.create({
     color: colorPallet.neutral_lightest,
   },
 });
-
-
-
-
-
-
-

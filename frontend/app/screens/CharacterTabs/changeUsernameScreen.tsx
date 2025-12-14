@@ -14,6 +14,7 @@ import { typography, containers } from "@/styles";
 import { Ionicons } from "@expo/vector-icons";
 import { FormTextInput, FormButton, BackButton } from "@/components";
 import { getCharacter, updateUsername } from "@/api/endpoints";
+import { useAuth } from "@/lib/auth-context";
 import axios from "axios";
 
 // ============================================================================
@@ -21,6 +22,7 @@ import axios from "axios";
 // ============================================================================
 
 export default function ChangeUsernameScreen() {
+  const { user, fetchUserProfile } = useAuth();
   const [currentUsername, setCurrentUsername] = useState<string>("");
   const [newUsername, setNewUsername] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -31,8 +33,12 @@ export default function ChangeUsernameScreen() {
   useEffect(() => {
     async function loadProfile() {
       try {
-        const profile = await getCharacter();
-        setCurrentUsername(profile.username);
+        if (user?.profile?.username) {
+          setCurrentUsername(user.profile.username);
+        } else {
+          const profile = await getCharacter();
+          setCurrentUsername(profile.username);
+        }
       } catch (err) {
         console.error("Failed to load profile:", err);
         setError("Failed to load current username");
@@ -42,7 +48,7 @@ export default function ChangeUsernameScreen() {
     }
 
     loadProfile();
-  }, []);
+  }, [user?.profile?.username]);
 
   // validate and submit username change
   const handleSubmit = async () => {
@@ -77,6 +83,9 @@ export default function ChangeUsernameScreen() {
     try {
       // call API to update username
       await updateUsername({ username: newUsername });
+
+      // Refresh user profile to reflect changes everywhere
+      await fetchUserProfile();
 
       router.back();
     } catch (err: unknown) {
@@ -241,5 +250,3 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
 });
-
-

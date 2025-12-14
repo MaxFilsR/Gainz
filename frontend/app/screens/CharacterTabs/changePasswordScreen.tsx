@@ -14,6 +14,7 @@ import { typography, containers } from "@/styles";
 import { Ionicons } from "@expo/vector-icons";
 import { FormTextInput, FormButton, BackButton } from "@/components";
 import { updatePassword } from "@/api/endpoints";
+import { useAuth } from "@/lib/auth-context";
 import axios from "axios";
 
 // ============================================================================
@@ -21,6 +22,7 @@ import axios from "axios";
 // ============================================================================
 
 export default function ChangePasswordScreen() {
+  const { fetchUserProfile } = useAuth();
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -58,6 +60,9 @@ export default function ChangePasswordScreen() {
         current_password: oldPassword,
         new_password: newPassword,
       });
+
+      // Refresh user profile to reflect changes everywhere
+      await fetchUserProfile();
 
       router.back();
     } catch (err: unknown) {
