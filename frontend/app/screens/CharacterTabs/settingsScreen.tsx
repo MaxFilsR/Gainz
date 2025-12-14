@@ -54,11 +54,6 @@ const SettingScreen = () => {
       icon: "person-outline",
     },
     {
-      title: "Workout Schedule",
-      route: "/screens/CharacterTabs/workoutScheduleScreen",
-      icon: "calendar-outline",
-    },
-    {
       title: "Change Class",
       route: "/screens/CharacterTabs/changeClassScreen",
       icon: "shield-outline",
