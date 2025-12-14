@@ -178,6 +178,7 @@
       \strng{authornamehash}{23e0ecaf300172f8c1afafdca4c6b551}
       \strng{authorfullhash}{23e0ecaf300172f8c1afafdca4c6b551}
       \strng{authorfullhashraw}{23e0ecaf300172f8c1afafdca4c6b551}
+      \field{extraname}{1}
       \field{sortinit}{7}
       \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
@@ -191,6 +192,35 @@
       \verb https://codevoweb.com/rust-actix-web-build-crud-api-with-sqlx-and-mysql
       \endverb
       \keyw{{rust,actix-web,jwt,crud,sqlx}}
+    \endentry
+    \entry{tutorial-2-1}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=23e0ecaf300172f8c1afafdca4c6b551}{%
+           family={{Codevo}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{23e0ecaf300172f8c1afafdca4c6b551}
+      \strng{fullhash}{23e0ecaf300172f8c1afafdca4c6b551}
+      \strng{fullhashraw}{23e0ecaf300172f8c1afafdca4c6b551}
+      \strng{bibnamehash}{23e0ecaf300172f8c1afafdca4c6b551}
+      \strng{authorbibnamehash}{23e0ecaf300172f8c1afafdca4c6b551}
+      \strng{authornamehash}{23e0ecaf300172f8c1afafdca4c6b551}
+      \strng{authorfullhash}{23e0ecaf300172f8c1afafdca4c6b551}
+      \strng{authorfullhashraw}{23e0ecaf300172f8c1afafdca4c6b551}
+      \field{extraname}{2}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{How to Write Unit Tests for Your Rust API}}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://codevoweb.com/how-to-write-unit-tests-for-your-rust-api/
+      \endverb
+      \verb{url}
+      \verb https://codevoweb.com/how-to-write-unit-tests-for-your-rust-api/
+      \endverb
+      \keyw{{rust,actix-web}}
     \endentry
     \entry{tutorial-3}{online}{}{}
       \name{author}{1}{}{%
@@ -206,8 +236,8 @@
       \strng{authornamehash}{8b44f2a920065bd159932e3a2e96e75b}
       \strng{authorfullhash}{8b44f2a920065bd159932e3a2e96e75b}
       \strng{authorfullhashraw}{8b44f2a920065bd159932e3a2e96e75b}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{Don't Panic! Error Handling Hacks for Actix Web (Part 4)}}
@@ -234,8 +264,8 @@
       \strng{authornamehash}{004ff7379c62dafa06bc6a3bc97b6a50}
       \strng{authorfullhash}{004ff7379c62dafa06bc6a3bc97b6a50}
       \strng{authorfullhashraw}{004ff7379c62dafa06bc6a3bc97b6a50}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{Using JWT (JSON Web Tokens) to authorize users and protect API routes}}
@@ -517,8 +547,8 @@
       \strng{authorfullhash}{0e86993ade45032b58e03bd2ee5829a1}
       \strng{authorfullhashraw}{0e86993ade45032b58e03bd2ee5829a1}
       \field{extraname}{2}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{{Female Animated Character Base}}

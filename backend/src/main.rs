@@ -193,7 +193,7 @@ async fn add_default_users(pool: &PgPool) {
 
         // CHARACTERS table
         let username = usernames[user_id - 1];
-        let class = sqlx::query_as!(
+        let mut class: Class = sqlx::query_as!(
             Class,
             r#"
             SELECT name, stats as "stats: Stats"
@@ -207,6 +207,15 @@ async fn add_default_users(pool: &PgPool) {
         .unwrap();
 
         let level = random_range(30..=80);
+
+        let n1 = random_range(0..=level);
+        let n2 = random_range(0..=(level - n1));
+        let n3 = level - n1 - n2;
+
+        class.stats.strength += n1;
+        class.stats.endurance += n2;
+        class.stats.flexibility += n3;
+
         let exp_leftover = 0;
         let pending_stat_points = 0;
         let streak = 0;
