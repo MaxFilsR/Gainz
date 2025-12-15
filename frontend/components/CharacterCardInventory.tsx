@@ -128,9 +128,6 @@ function EquipmentSlotItem({
           </View>
         )}
       </View>
-      {/* <Text style={styles.slotLabel} numberOfLines={1}>
-        {slotName}
-      </Text> */}
     </TouchableOpacity>
   );
 }
@@ -149,13 +146,19 @@ export default function CharacterCardInventory({
 
   // Always get data from auth context
   const username = user?.profile?.username;
+  const className = user?.profile?.class?.name;
   const level = user?.profile?.level;
+  const expLeftover = user?.profile?.exp_leftover || 0;
+  const expNeeded = user?.profile?.exp_needed || 1;
   const stats = user?.profile?.class?.stats || {
     strength: 0,
     endurance: 0,
     flexibility: 0,
   };
   const availableStatPoints = user?.profile?.pending_stat_points || 0;
+
+  // Calculate progress percentage
+  const progressPercentage = Math.min((expLeftover / expNeeded) * 100, 100);
 
   return (
     <View style={[styles.container, { borderColor }]}>
@@ -164,15 +167,34 @@ export default function CharacterCardInventory({
         <View style={styles.headerContainer}>
           <View style={styles.headerInfo}>
             {username && <Text style={styles.username}>{username}</Text>}
+            {className && <Text style={styles.className}>• {className}</Text>}
             {level !== undefined && (
-              <Text style={styles.level}>Level {level}</Text>
+              <Text style={styles.level}>Lv.{level}</Text>
             )}
           </View>
           <TouchableOpacity onPress={onSettingsPress} activeOpacity={0.7}>
-            <Ionicons name="settings" size={24} color={colorPallet.secondary} />
+            <Ionicons name="settings" size={22} color={colorPallet.secondary} />
           </TouchableOpacity>
         </View>
       )}
+
+      {/* Experience Progress Bar */}
+      <View style={styles.progressBarContainer}>
+        <View style={styles.progressBarBackground}>
+          <View
+            style={[
+              styles.progressBarFill,
+              {
+                width: `${progressPercentage}%`,
+                backgroundColor: colorPallet.primary,
+              },
+            ]}
+          />
+        </View>
+        <Text style={styles.progressText}>
+          {expLeftover}/{expNeeded}
+        </Text>
+      </View>
 
       {/* Layered character preview with equipment slots */}
       <View style={styles.characterPreview}>
@@ -376,13 +398,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     padding: 16,
-    paddingBottom: 12,
+    paddingBottom: 8,
     backgroundColor: colorPallet.neutral_darkest,
   },
   headerInfo: {
     flexDirection: "row",
     gap: 8,
-    alignItems: "center",
+    alignItems: "baseline",
   },
   username: {
     ...typography.h2,
@@ -390,11 +412,42 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontSize: 20,
   },
+  className: {
+    ...typography.body,
+    color: colorPallet.neutral_3,
+    fontWeight: "500",
+    fontSize: 14,
+  },
   level: {
     ...typography.body,
     color: colorPallet.primary,
     fontWeight: "700",
     fontSize: 16,
+    marginLeft: 4,
+  },
+  progressBarContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    backgroundColor: colorPallet.neutral_darkest,
+  },
+  progressBarBackground: {
+    width: "100%",
+    height: 4,
+    backgroundColor: colorPallet.neutral_5,
+    borderRadius: 2,
+    overflow: "hidden",
+  },
+  progressBarFill: {
+    height: "100%",
+    borderRadius: 2,
+  },
+  progressText: {
+    ...typography.body,
+    color: colorPallet.primary,
+    fontSize: 10,
+    textAlign: "right",
+    marginTop: 4,
+    fontWeight: "500",
   },
   characterPreview: {
     width: "100%",

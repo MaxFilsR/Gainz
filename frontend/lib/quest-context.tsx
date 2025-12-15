@@ -69,7 +69,7 @@ export const QuestProvider = ({ children }: { children: ReactNode }) => {
       setQuests(data);
       return data;
     } catch (err) {
-      console.error("Failed to load quests:", err);
+      console.log("Failed to load quests:", err);
       setError("Failed to load quests");
       throw err;
     } finally {

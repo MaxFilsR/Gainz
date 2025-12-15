@@ -76,7 +76,7 @@ export const FriendsProvider = ({ children }: { children: ReactNode }) => {
       const data = await getFriends();
       setFriends(data);
     } catch (err) {
-      console.error("Failed to load friends:", err);
+      console.log("Failed to load friends:", err);
       setError("Failed to load friends");
     } finally {
       setLoading(false);
@@ -96,7 +96,7 @@ export const FriendsProvider = ({ children }: { children: ReactNode }) => {
       setIncomingRequests(incoming);
       setOutgoingRequests(outgoing);
     } catch (err) {
-      console.error("Failed to load friend requests:", err);
+      console.log("Failed to load friend requests:", err);
       setError("Failed to load friend requests");
     }
   }, []);
@@ -110,7 +110,7 @@ export const FriendsProvider = ({ children }: { children: ReactNode }) => {
         await sendFriendRequest({ recipient_id: recipientId });
         await refreshRequests();
       } catch (err) {
-        console.error("Failed to send friend request:", err);
+        console.log("Failed to send friend request:", err);
         throw err;
       }
     },
@@ -126,7 +126,7 @@ export const FriendsProvider = ({ children }: { children: ReactNode }) => {
         await respondToFriendRequest({ request_id: requestId, accept: true });
         await Promise.all([refreshFriends(), refreshRequests()]);
       } catch (err) {
-        console.error("Failed to accept friend request:", err);
+        console.log("Failed to accept friend request:", err);
         throw err;
       }
     },
@@ -142,7 +142,7 @@ export const FriendsProvider = ({ children }: { children: ReactNode }) => {
         await respondToFriendRequest({ request_id: requestId, accept: false });
         await refreshRequests();
       } catch (err) {
-        console.error("Failed to decline friend request:", err);
+        console.log("Failed to decline friend request:", err);
         throw err;
       }
     },
@@ -158,7 +158,7 @@ export const FriendsProvider = ({ children }: { children: ReactNode }) => {
         await deleteFriend(friendId);
         await refreshFriends();
       } catch (err) {
-        console.error("Failed to remove friend:", err);
+        console.log("Failed to remove friend:", err);
         throw err;
       }
     },

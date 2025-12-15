@@ -50,7 +50,7 @@ export default function HomeScreen() {
       const data = await getCharacter();
       setProfile(data);
     } catch (err) {
-      console.error("Failed to load profile:", err);
+      console.log("Failed to load profile:", err);
     } finally {
       setLoading(false);
     }
