@@ -17,7 +17,7 @@ The goal is simple: make working out fun, rewarding, and addictive through smart
 
 - [Suvi Nwoko](https://github.com/smarianw) — Frontend Developer
 
-- [Daniel Yetin](https://github.com/Dyredhead) — Backend Developer
+- [Daniel Yentin](https://github.com/Dyredhead) — Backend Developer
 
 - [Maximilian Jaramazovic](https://github.com/maximilianjaramazovic) — Backend Developer
 
